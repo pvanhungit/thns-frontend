@@ -17,7 +17,13 @@ export type ResponsiveHiddenProps = React.PropsWithChildren<{
 export default function ResponsiveHidden({ query, start, end, children }: ResponsiveHiddenProps) {
   const isHidden = useResponsive(query, start, end);
 
-  if (isHidden) {
+  const [hasMounted, setHasMounted] = React.useState(false);
+
+  React.useEffect(() => {
+    setHasMounted(true);
+  }, []);
+
+  if (isHidden || !hasMounted) {
     return null;
   }
 

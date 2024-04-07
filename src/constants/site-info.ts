@@ -6,7 +6,7 @@ export const LIST_SHOWROOM = [
   {
     name: 'Showroom 01',
     address: '123 Nguyễn Văn A, P8, Quận Tân Bình, TP.HCM',
-    sale: {
+    buy: {
       phone: '0800 000 001',
       workingTime: '07:30 - 21:30',
     },
@@ -19,7 +19,7 @@ export const LIST_SHOWROOM = [
   {
     name: 'Showroom 02',
     address: '123 Nguyễn Văn B, P8, Quận Tân Bình, TP.HCM',
-    sale: {
+    buy: {
       phone: '0800 000 001',
       workingTime: '07:30 - 21:30',
     },
@@ -32,7 +32,7 @@ export const LIST_SHOWROOM = [
   {
     name: 'Showroom 03',
     address: '123 Nguyễn Văn A, P8, Quận Tân Bình, TP.HCM',
-    sale: {
+    buy: {
       phone: '0800 000 001',
       workingTime: '07:30 - 21:30',
     },
@@ -45,7 +45,7 @@ export const LIST_SHOWROOM = [
   {
     name: 'Showroom 04',
     address: '123 Nguyễn Văn A, P8, Quận Tân Bình, TP.HCM',
-    sale: {
+    buy: {
       phone: '0800 000 001',
       workingTime: '07:30 - 21:30',
     },
@@ -58,7 +58,7 @@ export const LIST_SHOWROOM = [
   {
     name: 'Showroom 05',
     address: '123 Nguyễn Văn A, P8, Quận Tân Bình, TP.HCM',
-    sale: {
+    buy: {
       phone: '0800 000 001',
       workingTime: '07:30 - 21:30',
     },

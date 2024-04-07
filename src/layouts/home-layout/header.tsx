@@ -10,7 +10,6 @@ import Stack from '@mui/material/Stack';
 import TextField from '@mui/material/TextField';
 import Toolbar from '@mui/material/Toolbar';
 
-import { HOME_HEADER_SIZE } from '@/constants';
 import { useOffSetTop } from '@/hooks';
 import { useI18n } from '@/locales/client';
 
@@ -19,13 +18,15 @@ import Iconify from '@/components/iconify';
 import Logo from '@/components/logo';
 import ResponsiveHidden from '@/components/responsive-hidden';
 
+import { HEADER_DESKTOP_HEIGHT, HEADER_DESKTOP_OFFSET, HEADER_MOBILE_HEIGHT } from './config';
+
 // ----------------------------------------------------------------------
 
 export function HomeHeader() {
   const t = useI18n();
   const theme = useTheme();
 
-  const offsetTop = useOffSetTop(HOME_HEADER_SIZE.H_DESKTOP / 2);
+  const offsetTop = useOffSetTop(HEADER_DESKTOP_HEIGHT / 2);
 
   return (
     <AppBar color="transparent" sx={{ boxShadow: 'none' }}>
@@ -33,8 +34,8 @@ export function HomeHeader() {
         disableGutters
         sx={{
           height: {
-            xs: HOME_HEADER_SIZE.H_MOBILE,
-            md: HOME_HEADER_SIZE.H_DESKTOP,
+            xs: HEADER_MOBILE_HEIGHT,
+            md: HEADER_DESKTOP_HEIGHT,
           },
           transition: theme.transitions.create(['height'], {
             easing: theme.transitions.easing.easeInOut,
@@ -42,7 +43,7 @@ export function HomeHeader() {
           }),
           ...(offsetTop && {
             ...bgBlur({ color: theme.palette.background.default }),
-            height: { md: HOME_HEADER_SIZE.H_DESKTOP_OFFSET },
+            height: { md: HEADER_DESKTOP_OFFSET },
           }),
         }}
       >
@@ -55,7 +56,7 @@ export function HomeHeader() {
             columnGap: 5,
           }}
         >
-          <Logo type="full" sx={{ height: 40, width: 'auto' }} />
+          <Logo type="full" sx={{ height: 30, width: 'auto' }} />
 
           <Stack
             direction="row"
@@ -63,7 +64,16 @@ export function HomeHeader() {
             justifyContent="center"
             sx={{ flex: 1, height: 'auto' }}
           >
-            <TextField size="small" sx={{ flex: 1 }} placeholder="Bạn tìm gì" />
+            <TextField
+              size="small"
+              sx={{ flex: 1, maxWidth: 400, mr: -2 }}
+              InputProps={{
+                sx: {
+                  backgroundColor: `${theme.palette.primary.lighter}60`,
+                },
+              }}
+              placeholder={t('header.what_are_you_looking_for')}
+            />
 
             <ResponsiveHidden query="down" start="md">
               <Button variant="contained" startIcon={<Iconify icon="mingcute:search-2-fill" />}>

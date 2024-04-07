@@ -1,20 +1,28 @@
+import NextLink from 'next/link';
+
 import { type SxProps, type Theme } from '@mui/material/styles';
 import Box from '@mui/material/Box';
+import Container from '@mui/material/Container';
 import Divider from '@mui/material/Divider';
 import Grid from '@mui/material/Grid';
-import MuiLink from '@mui/material/Link';
+import MuiLink, { LinkProps as MuiLinkProps } from '@mui/material/Link';
 import Stack from '@mui/material/Stack';
 import Typography from '@mui/material/Typography';
 
 import { LIST_SHOWROOM } from '@/constants/site-info';
+import { getI18n } from '@/locales/server';
 
 import Iconify from '@/components/iconify';
 
 // ----------------------------------------------------------------------
 
-export function HomeFooter() {
+export async function ShowroomList() {
+  const t = await getI18n();
+
   return (
-    <Stack alignItems="center" rowGap={2}>
+    <Container
+      sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center', rowGap: 2, py: 5 }}
+    >
       <Typography variant="h4" textAlign="center" textTransform="uppercase">
         Hệ thống showroom
       </Typography>
@@ -56,16 +64,32 @@ export function HomeFooter() {
                 </Box>
               </Stack>
 
-              <ItemLink text={sr.address} icon="mingcute:map-pin-fill" href="#" />
+              <InfoText
+                text={sr.address}
+                icon="mingcute:map-pin-fill"
+                href="#"
+                sx={{ fontWeight: 600 }}
+              />
+              <InfoText
+                text={`${t('footer.buy')} ${sr.buy.phone}`}
+                icon="line-md:phone-call-loop"
+                href={`tel:${sr.buy.phone}`}
+              />
+              <InfoText
+                text={`${t('footer.warranty')} ${sr.warranty.phone}`}
+                icon="line-md:phone-call-loop"
+                href="#"
+              />
+              <InfoText text={sr.workingDay} icon="svg-spinners:clock" href="#" />
             </Stack>
           </Grid>
         ))}
       </Grid>
-    </Stack>
+    </Container>
   );
 }
 
-function ItemLink({
+function InfoText({
   icon,
   text,
   href,
@@ -73,19 +97,28 @@ function ItemLink({
 }: {
   icon: string;
   text: string;
-  href: string;
+  href?: string;
   sx?: SxProps<Theme>;
 }) {
+  const props: MuiLinkProps = {};
+  if (href && href !== '#') {
+    props.href = href;
+    props.target = '_blank';
+    props.component = NextLink;
+  } else {
+    props.component = 'p';
+    props.underline = 'none';
+  }
+
   return (
     <MuiLink
       variant="subtitle2"
       display="flex"
       justifyContent="start"
       alignItems="center"
-      href={href}
-      target={href === '#' ? '_self' : '_blank'}
       color="common.black"
-      sx={{ ...sx }}
+      sx={{ fontWeight: 400, ...sx }}
+      {...props}
     >
       <Iconify icon={icon} sx={{ mr: 1 }} />
       {text}
