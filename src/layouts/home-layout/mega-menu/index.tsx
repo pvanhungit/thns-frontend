@@ -1,123 +1,69 @@
 'use client';
 
-import { useTheme } from '@mui/material/styles';
-import AppBar from '@mui/material/AppBar';
-import Badge from '@mui/material/Badge';
+import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
+import Card from '@mui/material/Card';
 import Container from '@mui/material/Container';
-import IconButton from '@mui/material/IconButton';
 import Stack from '@mui/material/Stack';
-import TextField from '@mui/material/TextField';
-import Toolbar from '@mui/material/Toolbar';
+import Typography from '@mui/material/Typography';
 
-import { useBoolean, useOffSetTop } from '@/hooks';
-import { useI18n } from '@/locales/client';
+import { useBoolean } from '@/hooks';
 
-import { bgBlur } from '@/themes/css';
 import Iconify from '@/components/iconify';
-import Logo from '@/components/logo';
-import ResponsiveHidden from '@/components/responsive-hidden';
 
-import { HEADER_DESKTOP_HEIGHT, HEADER_DESKTOP_OFFSET, HEADER_MOBILE_HEIGHT } from './config';
-import MegaMenuMobile from './mega-menu/mega-menu-mobile';
-import { MegaMenuItemProps } from './mega-menu/types';
+import MegaMenuDesktop from './mega-menu-desktop';
+import MegaMenuMobile from './mega-menu-mobile';
+import { MegaMenuItemProps } from './types';
 
 // ----------------------------------------------------------------------
 
-export function HomeHeader() {
-  const t = useI18n();
-  const theme = useTheme();
+export default function MegaMenuView() {
   const menu = useBoolean();
 
-  const offsetTop = useOffSetTop(HEADER_DESKTOP_HEIGHT / 2);
-
   return (
-    <AppBar color="transparent" sx={{ boxShadow: 'none' }}>
-      <Toolbar
-        disableGutters
-        sx={{
-          height: {
-            xs: HEADER_MOBILE_HEIGHT,
-            md: HEADER_DESKTOP_HEIGHT,
-          },
-          transition: theme.transitions.create(['height'], {
-            easing: theme.transitions.easing.easeInOut,
-            duration: theme.transitions.duration.shorter,
-          }),
-          ...(offsetTop && {
-            ...bgBlur({ color: theme.palette.background.default }),
-            height: { md: HEADER_DESKTOP_OFFSET },
-          }),
-        }}
-      >
-        <Container
-          sx={{
-            height: 1,
-            display: 'flex',
-            alignItems: 'center',
-            flexDirection: 'row',
-            columnGap: 5,
-          }}
-        >
-          <Logo type="full" sx={{ height: 30, width: 'auto' }} />
-
-          <Stack
-            direction="row"
-            alignItems="stretch"
-            justifyContent="center"
-            sx={{ flex: 1, height: 'auto' }}
-          >
-            <TextField
-              size="small"
-              sx={{ flex: 1, maxWidth: 400, mr: -2 }}
-              InputProps={{
-                sx: {
-                  backgroundColor: `${theme.palette.primary.lighter}60`,
-                },
-              }}
-              placeholder={t('header.what_are_you_looking_for')}
-            />
-
-            <ResponsiveHidden query="down" start="md">
-              <Button variant="contained" startIcon={<Iconify icon="mingcute:search-2-fill" />}>
-                {t('actions.search')}
-              </Button>
-            </ResponsiveHidden>
-            <ResponsiveHidden query="up" start="md">
-              <IconButton>
-                <Iconify icon="mingcute:search-2-fill" />
-              </IconButton>
-            </ResponsiveHidden>
-          </Stack>
-
-          <MegaMenuMobile
-            data={data}
-            open={menu.value}
-            onOpen={menu.onTrue}
-            onClose={menu.onFalse}
-          />
-
+    <Container sx={{ my: 10 }}>
+      <MegaMenuMobile
+        data={data}
+        open={menu.value}
+        onOpen={menu.onTrue}
+        onClose={menu.onFalse}
+        action={
           <Button
-            startIcon={
-              <Badge badgeContent={1} color="primary" variant="standard">
-                <Iconify icon="mingcute:shopping-cart-2-fill" width={30} />
-              </Badge>
-            }
+            color="inherit"
+            variant="contained"
+            onClick={menu.onTrue}
+            startIcon={<Iconify icon="carbon:menu" />}
           >
-            Cart
+            Menu Mobile
           </Button>
-        </Container>
-      </Toolbar>
-    </AppBar>
+        }
+      />
+
+      <Stack direction="row" spacing={3} mt={5}>
+        <Card sx={{ width: 260, flexShrink: 0, overflow: 'unset', zIndex: 9 }}>
+          <Typography variant="h6" sx={{ p: 2, display: 'flex', alignItems: 'center' }}>
+            <Iconify icon="eva:list-fill" width={24} sx={{ mr: 1 }} /> Menu Vertical
+          </Typography>
+
+          <MegaMenuDesktop data={data} />
+        </Card>
+
+        <div>
+          <Box component="div" />
+        </div>
+      </Stack>
+    </Container>
   );
 }
+
+// MOCK DATA
+// ----------------------------------------------------------------------
 
 const data: MegaMenuItemProps[] = [
   {
     title: 'Parent 1',
     path: '#',
     icon: <Iconify icon="carbon:accessibility-alt" sx={{ width: 1, height: 1 }} />,
-
     children: [
       {
         subheader: 'Other Machinery & Parts',

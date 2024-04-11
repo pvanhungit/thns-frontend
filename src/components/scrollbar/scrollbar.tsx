@@ -11,7 +11,7 @@ import { StyledRootScrollbar, StyledScrollbar } from './scrollbar.styles';
 
 export type ScrollbarProps = React.PropsWithChildren<
   SimpleBarProps & {
-    sx: SxProps<Theme>;
+    sx?: SxProps<Theme>;
   }
 >;
 
