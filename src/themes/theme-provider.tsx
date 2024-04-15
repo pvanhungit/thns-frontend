@@ -34,7 +34,7 @@ export function ThemeProvider({ children }: React.PropsWithChildren) {
   );
 
   const theme = React.useMemo(() => {
-    const themeValued = createTheme(memoizedValue);
+    const themeValued = createTheme(memoizedValue, getMuiLocale(currentLocale));
     themeValued.components = overrides(themeValued);
     return themeValued;
   }, [currentLocale]);
