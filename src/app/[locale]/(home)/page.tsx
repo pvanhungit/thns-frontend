@@ -1,4 +1,4 @@
-import NextLink from 'next/link';
+import Link from 'next/link';
 
 import Button from '@mui/material/Button';
 import Stack from '@mui/material/Stack';
@@ -11,9 +11,9 @@ export default function HomePage() {
     <Stack justifyContent="center" alignItems="center">
       <Typography>Hello world</Typography>
 
-      <NextLink href="/auth/sign-in">
+      <Link href="/auth/sign-in">
         <Button>Login</Button>
-      </NextLink>
+      </Link>
 
       <p>
         Lorem ipsum dolor sit amet consectetur adipisicing elit. Numquam fugiat mollitia eaque

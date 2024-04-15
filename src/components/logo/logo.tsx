@@ -1,11 +1,11 @@
 'use client';
 
 import * as React from 'react';
-import NextLink from 'next/link';
+import Link from 'next/link';
 
 import { useTheme } from '@mui/material/styles';
 import Box, { BoxProps } from '@mui/material/Box';
-import Link from '@mui/material/Link';
+import MuiLink from '@mui/material/Link';
 
 // ----------------------------------------------------------------------
 
@@ -107,9 +107,9 @@ export const Logo = React.forwardRef<HTMLElement, LogoProps>(
     }
 
     return (
-      <Link component={NextLink} href="/" sx={{ display: 'contents' }}>
+      <MuiLink component={Link} href="/" sx={{ display: 'contents' }}>
         {logo}
-      </Link>
+      </MuiLink>
     );
   },
 );

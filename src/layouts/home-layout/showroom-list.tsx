@@ -1,4 +1,6 @@
-import NextLink from 'next/link';
+'use server';
+
+import Link from 'next/link';
 
 import { type SxProps, type Theme } from '@mui/material/styles';
 import Box from '@mui/material/Box';
@@ -104,7 +106,7 @@ function InfoText({
   if (href && href !== '#') {
     props.href = href;
     props.target = '_blank';
-    props.component = NextLink;
+    props.component = Link;
   } else {
     props.component = 'p';
     props.underline = 'none';

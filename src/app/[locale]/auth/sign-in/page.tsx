@@ -1,8 +1,8 @@
-import NextLink from 'next/link';
+import Link from 'next/link';
 
 import Card from '@mui/material/Card';
 import Divider from '@mui/material/Divider';
-import Link from '@mui/material/Link';
+import MuiLink from '@mui/material/Link';
 import Typography from '@mui/material/Typography';
 
 import { APP_NAME } from '@/constants';
@@ -23,9 +23,9 @@ export default async function SignInPage() {
 
       <Typography variant="body2" sx={{ mt: 2, mb: 5 }}>
         {t('don_t_have_an_account')}
-        <Link variant="subtitle2" sx={{ ml: 0.5 }} component={NextLink} href="/auth/sign-up">
+        <MuiLink variant="subtitle2" sx={{ ml: 0.5 }} component={Link} href="/auth/sign-up">
           {t('get_started')}
-        </Link>
+        </MuiLink>
       </Typography>
 
       <GoogleLoginButton />

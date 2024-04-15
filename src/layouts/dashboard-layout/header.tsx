@@ -11,9 +11,9 @@ import { bgBlur } from '@/themes/css';
 import Iconify from '@/components/iconify';
 import LanguagePopover from '@/components/language-popover';
 
-import AccountPopover from './common/account-popover';
-import Searchbar from './common/searchbar';
+import AccountPopover from './account-popover';
 import { HEADER, NAV } from './config-layout';
+import Searchbar from './searchbar';
 
 // ----------------------------------------------------------------------
 

@@ -1,5 +1,7 @@
 import { AxiosError } from 'axios';
 
+// ----------------------------------------------------------------------
+
 export const getErrorMessage = (error: unknown): string => {
   if (error instanceof AxiosError) {
     return getErrorMessage(error.response?.data);
@@ -8,6 +10,6 @@ export const getErrorMessage = (error: unknown): string => {
   const mgs =
     error && typeof error === 'object' && 'message' in error
       ? String(error.message)
-      : 'Some thing error';
+      : 'Some thing went wrong!';
   return mgs;
 };

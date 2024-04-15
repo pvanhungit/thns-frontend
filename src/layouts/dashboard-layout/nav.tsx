@@ -1,7 +1,7 @@
 'use client';
 
 import * as React from 'react';
-import NextLink from 'next/link';
+import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 
 import { alpha } from '@mui/material/styles';
@@ -121,7 +121,7 @@ function NavItem({ item }: { item: NavConfigItem }) {
 
   return (
     <ListItemButton
-      component={NextLink}
+      component={Link}
       href={item.path}
       sx={{
         minHeight: 44,

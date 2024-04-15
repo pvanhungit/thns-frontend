@@ -1,9 +1,15 @@
 import { type Metadata, type Viewport } from 'next';
 
+import { primaryFont } from '@/themes';
+
 // ----------------------------------------------------------------------
 
 export default function RootLayout({ children }: React.PropsWithChildren) {
-  return children;
+  return (
+    <html lang="en" suppressHydrationWarning>
+      <body className={primaryFont.className}>{children}</body>
+    </html>
+  );
 }
 
 export const viewport: Viewport = {
@@ -15,7 +21,7 @@ export const viewport: Viewport = {
 export const metadata: Metadata = {
   icons: [
     ...[192, 512].map((size) => ({
-      url: `/favicon/android-chrome/android-chrome-${size}x${size}.png`,
+      url: `/favicon/android-chrome-${size}x${size}.png`,
       sizes: `${size}x${size}`,
       rel: 'icon',
     })),

@@ -1,4 +1,4 @@
-import NextLink from 'next/link';
+import Link from 'next/link';
 
 import Box from '@mui/material/Box';
 import Container from '@mui/material/Container';
@@ -70,7 +70,7 @@ export function HomeFooter() {
                   {list.children.map((link) => (
                     <MuiLink
                       key={link.name}
-                      component={NextLink}
+                      component={Link}
                       href={link.href}
                       color="inherit"
                       variant="body2"
