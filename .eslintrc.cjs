@@ -29,6 +29,7 @@ module.exports = {
     warnOnUnsupportedTypeScriptVersion: false,
     tsconfigRootDir: __dirname,
   },
+  ignorePatterns: ['*.mjs'],
   rules: {
     // @typescript-eslint
     'no-unused-vars': 'off', // off base rule, use @typescript-eslint/no-unused-vars instead

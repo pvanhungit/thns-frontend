@@ -2,9 +2,10 @@ import type { Metadata } from 'next';
 
 import { AppRouterCacheProvider } from '@mui/material-nextjs/v14-appRouter';
 
-import { LocalesProvider } from '@/locales/client';
+import { I18nProviderClient } from '@/locales/client';
 
-import { ThemeProvider } from '@/themes';
+import { primaryFont, ThemeProvider } from '@/themes';
+import { ToastContainer } from '@/components/toastify';
 
 import { GoogleOAuthProvider } from '@/modules/auth/client';
 
@@ -21,12 +22,17 @@ export type RootLayoutProps = React.PropsWithChildren<{
 
 export default function RootLayout({ children, params: { locale } }: RootLayoutProps) {
   return (
-    <LocalesProvider locale={locale ?? 'en'}>
-      <AppRouterCacheProvider options={{ key: 'css' }}>
-        <ThemeProvider>
-          <GoogleOAuthProvider>{children}</GoogleOAuthProvider>
-        </ThemeProvider>
-      </AppRouterCacheProvider>
-    </LocalesProvider>
+    <html lang={locale ?? 'en'} suppressHydrationWarning>
+      <body className={primaryFont.className}>
+        <I18nProviderClient locale={locale ?? 'en'}>
+          <AppRouterCacheProvider options={{ key: 'css' }}>
+            <ThemeProvider>
+              <GoogleOAuthProvider>{children}</GoogleOAuthProvider>
+              <ToastContainer />
+            </ThemeProvider>
+          </AppRouterCacheProvider>
+        </I18nProviderClient>
+      </body>
+    </html>
   );
 }
