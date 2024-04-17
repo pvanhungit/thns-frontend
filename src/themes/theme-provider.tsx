@@ -47,7 +47,7 @@ export function ThemeProvider({ children }: React.PropsWithChildren) {
   );
 }
 
-const getMuiLocale = (locale: ReturnType<typeof useCurrentLocale>) => {
+function getMuiLocale(locale: ReturnType<typeof useCurrentLocale>) {
   switch (locale) {
     case 'vi':
       return viVN;
@@ -55,4 +55,4 @@ const getMuiLocale = (locale: ReturnType<typeof useCurrentLocale>) => {
     default:
       return enUS;
   }
-};
+}
