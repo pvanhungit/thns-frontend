@@ -29,7 +29,7 @@ export type NavProps = {
   onCloseNav: VoidFunction;
 };
 
-export function Nav({ openNav, onCloseNav }: NavProps) {
+export function DashboardNav({ openNav, onCloseNav }: NavProps) {
   const pathname = usePathname();
 
   const upLg = useResponsive('up', 'lg');
