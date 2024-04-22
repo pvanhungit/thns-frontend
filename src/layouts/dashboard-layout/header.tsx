@@ -11,13 +11,13 @@ import { bgBlur } from '@/themes/css';
 import Iconify from '@/components/iconify';
 import LanguagePopover from '@/components/language-popover';
 
-import AccountPopover from './common/account-popover';
-import Searchbar from './common/searchbar';
+import AccountPopover from './account-popover';
 import { HEADER, NAV } from './config-layout';
+import Searchbar from './searchbar';
 
 // ----------------------------------------------------------------------
 
-export default function Header({ onOpenNav }: { onOpenNav: VoidFunction }) {
+export function DashboardHeader({ onOpenNav }: { onOpenNav: VoidFunction }) {
   const theme = useTheme();
 
   const lgUp = useResponsive('up', 'lg');

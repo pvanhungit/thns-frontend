@@ -1,6 +1,6 @@
 'use client';
 
-import NextLink from 'next/link';
+import Link from 'next/link';
 
 import { useTheme } from '@mui/material';
 import IconButton from '@mui/material/IconButton';
@@ -12,7 +12,7 @@ import Iconify from '@/components/iconify';
 
 // ----------------------------------------------------------------------
 
-export default function HomeFabs() {
+export function HomeFabs() {
   const theme = useTheme();
 
   const handleScrollToTop = () => {
@@ -36,14 +36,14 @@ export default function HomeFabs() {
       direction="column"
     >
       <IconButton>
-        <NextLink href={FACEBOOK_URL} target="_blank">
+        <Link href={FACEBOOK_URL} target="_blank">
           <Iconify icon="logos:facebook" width={32} />
-        </NextLink>
+        </Link>
       </IconButton>
       <IconButton>
-        <NextLink href={YOUTUBE_URL} target="_blank">
+        <Link href={YOUTUBE_URL} target="_blank">
           <Iconify icon="logos:youtube-icon" width={32} />
-        </NextLink>
+        </Link>
       </IconButton>
       <IconButton onClick={handleScrollToTop}>
         <Iconify icon="fa6-solid:circle-up" color="primary.main" width={32} />

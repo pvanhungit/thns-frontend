@@ -1,8 +1,8 @@
-import NextLink from 'next/link';
+import Link from 'next/link';
 
 import Card from '@mui/material/Card';
 import Divider from '@mui/material/Divider';
-import Link from '@mui/material/Link';
+import MuiLink from '@mui/material/Link';
 import Typography from '@mui/material/Typography';
 
 import { getScopedI18n } from '@/locales/server';
@@ -20,9 +20,9 @@ export default async function SignUpPage() {
       <Typography variant="h4">Get started absolutely free</Typography>
       <Typography variant="body2" sx={{ mt: 2, mb: 5 }}>
         Already have an account?
-        <Link variant="subtitle2" sx={{ ml: 0.5 }} component={NextLink} href="/auth/sign-in">
+        <MuiLink variant="subtitle2" sx={{ ml: 0.5 }} component={Link} href="/auth/sign-in">
           Sign in
-        </Link>
+        </MuiLink>
       </Typography>
       <GoogleLoginButton />
       <Divider sx={{ my: 3 }}>

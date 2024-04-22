@@ -12,11 +12,7 @@ import Logo from '@/components/logo';
 
 // ----------------------------------------------------------------------
 
-export default function AuthLayout({
-  children,
-}: Readonly<{
-  children: React.ReactNode;
-}>) {
+export default function AuthLayout({ children }: React.PropsWithChildren) {
   const theme = useTheme();
 
   return (

@@ -112,7 +112,7 @@ export function palette(mode: PaletteMode): PaletteOptions {
     background: {
       paper: '#FFFFFF',
       default: grey[100],
-      neutral: grey[200],
+      neutral: alpha(grey[300], 0.5),
     },
     action: {
       ...base.action,

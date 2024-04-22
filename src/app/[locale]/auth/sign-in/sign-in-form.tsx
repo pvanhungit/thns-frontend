@@ -1,12 +1,12 @@
 'use client';
 
 import * as React from 'react';
-import NextLink from 'next/link';
+import Link from 'next/link';
 import { useRouter, useSearchParams } from 'next/navigation';
 
 import Alert from '@mui/material/Alert';
 import Button from '@mui/material/Button';
-import Link from '@mui/material/Link';
+import MuiLink from '@mui/material/Link';
 import Stack from '@mui/material/Stack';
 
 import { zodResolver } from '@hookform/resolvers/zod';
@@ -76,9 +76,9 @@ export function SignInForm() {
         </Button>
 
         <Stack direction="row" alignItems="center" justifyContent="flex-end">
-          <Link variant="subtitle2" component={NextLink} href="/auth/forgot-password">
+          <MuiLink variant="subtitle2" component={Link} href="/auth/forgot-password">
             {t('auth.forgot_password')}
-          </Link>
+          </MuiLink>
         </Stack>
       </Stack>
     </FormProvider>

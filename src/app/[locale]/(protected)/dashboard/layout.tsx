@@ -4,22 +4,19 @@ import * as React from 'react';
 
 import Box from '@mui/material/Box';
 
-import Header from './_components/header';
-import Main from './_components/main';
-import Nav from './_components/nav';
+import { useResponsive } from '@/hooks';
+
+import { DashboardHeader, DashboardNav, HEADER, NAV } from '@/layouts/dashboard-layout';
 
 // ----------------------------------------------------------------------
 
-export default function DashboardLayout({
-  children,
-}: Readonly<{
-  children: React.ReactNode;
-}>) {
+export default function DashboardLayout({ children }: React.PropsWithChildren) {
+  const lgUp = useResponsive('up', 'lg');
   const [openNav, setOpenNav] = React.useState(false);
 
   return (
     <>
-      <Header onOpenNav={() => setOpenNav(true)} />
+      <DashboardHeader onOpenNav={() => setOpenNav(true)} />
 
       <Box
         sx={{
@@ -28,9 +25,25 @@ export default function DashboardLayout({
           flexDirection: { xs: 'column', lg: 'row' },
         }}
       >
-        <Nav openNav={openNav} onCloseNav={() => setOpenNav(false)} />
+        <DashboardNav openNav={openNav} onCloseNav={() => setOpenNav(false)} />
 
-        <Main>{children}</Main>
+        <Box
+          component="main"
+          sx={{
+            flexGrow: 1,
+            minHeight: 1,
+            display: 'flex',
+            flexDirection: 'column',
+            py: `${HEADER.H_MOBILE + 8}px`,
+            ...(lgUp && {
+              px: 2,
+              py: `${HEADER.H_DESKTOP + 8}px`,
+              width: `calc(100% - ${NAV.WIDTH}px)`,
+            }),
+          }}
+        >
+          {children}
+        </Box>
       </Box>
     </>
   );

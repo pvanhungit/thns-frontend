@@ -1,0 +1,3 @@
+export const HEADER_MOBILE_HEIGHT = 64;
+export const HEADER_DESKTOP_HEIGHT = 80;
+export const HEADER_DESKTOP_OFFSET = 80 - 16;

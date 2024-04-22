@@ -13,14 +13,8 @@ export const {
   useCurrentLocale,
 } = createI18nClient(
   {
-    en: async () => {
-      await new Promise((resolve) => setTimeout(resolve, 100));
-      return import('../languages/en');
-    },
-    vi: async () => {
-      await new Promise((resolve) => setTimeout(resolve, 100));
-      return import('../languages/vi');
-    },
+    en: () => import('./languages/en'),
+    vi: () => import('./languages/vi'),
   },
   {
     // Uncomment to set base path

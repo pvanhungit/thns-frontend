@@ -1,9 +1,8 @@
 import { type Metadata, type Viewport } from 'next';
 
-import { Analytics } from '@vercel/analytics/react';
+import { AppRouterCacheProvider } from '@mui/material-nextjs/v14-appRouter';
 
 import { primaryFont } from '@/themes';
-import { ToastContainer } from '@/components/toastify';
 
 // ----------------------------------------------------------------------
 
@@ -11,10 +10,7 @@ export default function RootLayout({ children }: React.PropsWithChildren) {
   return (
     <html lang="en" suppressHydrationWarning>
       <body className={primaryFont.className}>
-        {children}
-
-        <ToastContainer />
-        {process.env.NODE_ENV === 'production' ? <Analytics /> : null}
+        <AppRouterCacheProvider options={{ key: 'css' }}>{children}</AppRouterCacheProvider>
       </body>
     </html>
   );
@@ -29,7 +25,7 @@ export const viewport: Viewport = {
 export const metadata: Metadata = {
   icons: [
     ...[192, 512].map((size) => ({
-      url: `/favicon/android-chrome/android-chrome-${size}x${size}.png`,
+      url: `/favicon/android-chrome-${size}x${size}.png`,
       sizes: `${size}x${size}`,
       rel: 'icon',
     })),
