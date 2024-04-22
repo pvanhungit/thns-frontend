@@ -16,7 +16,7 @@ import { MuiTypography } from './mui-typography';
 
 export const overrides = (theme: Theme): Theme['components'] =>
   Object.assign(
-    {},
+    theme.components ?? {},
     MuiCssBaseline(theme),
     MuiBackdrop(theme),
     MuiButton(theme),

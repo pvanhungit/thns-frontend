@@ -12,7 +12,7 @@ import Iconify from '@/components/iconify';
 
 // ----------------------------------------------------------------------
 
-export default function HomeFabs() {
+export function HomeFabs() {
   const theme = useTheme();
 
   const handleScrollToTop = () => {

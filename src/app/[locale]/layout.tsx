@@ -1,7 +1,5 @@
 import type { Metadata } from 'next';
 
-import { AppRouterCacheProvider } from '@mui/material-nextjs/v14-appRouter';
-
 import { I18nProviderClient } from '@/locales/client';
 
 import { ThemeProvider } from '@/themes';
@@ -23,13 +21,11 @@ type RootLayoutProps = React.PropsWithChildren<{
 export default function RootLayout({ children, params: { locale } }: RootLayoutProps) {
   return (
     <I18nProviderClient locale={locale ?? 'en'}>
-      <AppRouterCacheProvider options={{ key: 'css' }}>
-        <ThemeProvider>
-          <GoogleOAuthProvider>{children}</GoogleOAuthProvider>
+      <ThemeProvider>
+        <GoogleOAuthProvider>{children}</GoogleOAuthProvider>
 
-          <ToastContainer />
-        </ThemeProvider>
-      </AppRouterCacheProvider>
+        <ToastContainer />
+      </ThemeProvider>
     </I18nProviderClient>
   );
 }

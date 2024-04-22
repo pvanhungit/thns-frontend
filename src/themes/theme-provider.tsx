@@ -22,7 +22,7 @@ import { typography } from './typography';
 
 export function ThemeProvider({ children }: React.PropsWithChildren) {
   const currentLocale = useCurrentLocale();
-  const memoizedValue = React.useMemo<ThemeOptions>(
+  const themeOptions = React.useMemo<ThemeOptions>(
     () => ({
       palette: palette('light'),
       typography,
@@ -34,7 +34,7 @@ export function ThemeProvider({ children }: React.PropsWithChildren) {
   );
 
   const theme = React.useMemo(() => {
-    const themeValued = createTheme(memoizedValue, getMuiLocale(currentLocale));
+    const themeValued = createTheme(themeOptions, getMuiLocale(currentLocale));
     themeValued.components = overrides(themeValued);
     return themeValued;
   }, [currentLocale]);

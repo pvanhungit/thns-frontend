@@ -8,7 +8,7 @@ import { HEADER, NAV } from './config-layout';
 
 const SPACING = 8;
 
-export default function Main({ children, sx, ...other }: BoxProps) {
+export function Main({ children, sx, ...other }: BoxProps) {
   const lgUp = useResponsive('up', 'lg');
 
   return (

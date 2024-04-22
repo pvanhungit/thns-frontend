@@ -17,7 +17,7 @@ import Searchbar from './searchbar';
 
 // ----------------------------------------------------------------------
 
-export default function Header({ onOpenNav }: { onOpenNav: VoidFunction }) {
+export function Header({ onOpenNav }: { onOpenNav: VoidFunction }) {
   const theme = useTheme();
 
   const lgUp = useResponsive('up', 'lg');

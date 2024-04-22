@@ -1,5 +1,7 @@
 import { type Metadata, type Viewport } from 'next';
 
+import { AppRouterCacheProvider } from '@mui/material-nextjs/v14-appRouter';
+
 import { primaryFont } from '@/themes';
 
 // ----------------------------------------------------------------------
@@ -7,7 +9,9 @@ import { primaryFont } from '@/themes';
 export default function RootLayout({ children }: React.PropsWithChildren) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body className={primaryFont.className}>{children}</body>
+      <body className={primaryFont.className}>
+        <AppRouterCacheProvider options={{ key: 'css' }}>{children}</AppRouterCacheProvider>
+      </body>
     </html>
   );
 }
